@@ -1,0 +1,107 @@
+article {
+  width: 21cm;
+  min-height: 29.7cm;
+  background: white;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 1em;
+  /* background: pink; */
+}
+
+.bio {
+  position: relative;
+  > img {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.education {
+}
+
+.skills .wrapper {
+  flex-direction: column;
+}
+
+// 项目模块
+.projects {
+  > p {
+    color: #666;
+  }
+  > strong {
+    color: #f60;
+  }
+  ol {
+    margin-top: 0;
+    list-style-position: inside;
+    padding: 0;
+    > li {
+      margin-bottom: 24px;
+      > header {
+        display: flex;
+        justify-content: space-between;
+      }
+      > h3 {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// 工作经历模块
+.work {
+  p {
+    color: #666;
+  }
+  strong {
+    color: #f60;
+  }
+  ol {
+    margin-top: 0;
+    list-style-position: inside;
+    padding: 0;
+
+    li {
+      margin-bottom: 24px;
+
+      header {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    h3 {
+      display: inline-block;
+    }
+  }
+}
+
+// 居中
+@media (max-width: 500px) {
+  body {
+    margin: 0;
+  }
+
+  article {
+    width: auto;
+    height: auto;
+  }
+
+  .bio img {
+    display: none;
+  }
+
+  .skills .wrapper {
+    flex-direction: column;
+  }
+
+  .jobs header {
+    flex-direction: column;
+  }
+
+  .jobs header > h3,
+  .jobs header > h4,
+  .jobs header > span {
+    margin: 0;
+  }
+}
