@@ -4,5 +4,5 @@ import vue from "@vitejs/plugin-vue";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: "/cv-wwy", // 设置前缀
+  base: "/cv-2024", // 设置前缀
 });
