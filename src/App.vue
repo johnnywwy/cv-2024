@@ -34,10 +34,11 @@
             <div style="margin-bottom: 8px">
               <span class="tag">React</span>
               <span class="tag">Ant Design</span>
-              <span class="tag">react-router-dom</span>
+              <span class="tag">React-router-dom</span>
               <span class="tag">Axios</span>
               <span class="tag">Redux</span>
               <span class="tag">Vite</span>
+
               <span class="tag">Websocket</span>
             </div>
             <div class="content">
@@ -73,7 +74,8 @@
                 <p>
                   2. <b>解析
                     Excel</b>：根据业务需求，封装了通用 Excel 文件转 JSON
-                  的导入组件，并发布到公司npm私有源供团队各个项目中使用。该组件支持高度自定义和数据处理功能，包括可<strong>根据字典配置自动映射相关数据</strong>，<strong>支持分页上传</strong>、<strong>自动表头匹配</strong>、<strong>数据校验与错误提示</strong>、显著提升了数据导入的效率和准确性。
+                  的导入组件，并发布到公司 npm
+                  私有源供团队各个项目中使用。该组件支持高度自定义和数据处理功能，包括可<strong>根据字典配置自动映射相关数据</strong>，<strong>支持分页上传</strong>、<strong>自动表头匹配</strong>、<strong>数据校验与错误提示</strong>、显著提升了数据导入的效率和准确性。
                 </p>
                 <p>
                   3. <b>数据可视化分析</b>： 利用 ECharts 提供多种图表和可视化组件，将跳绳数据和运动表现通过直观的图表展示，通过时间轴功能展示历史数据，方便用户追踪和回顾长期运动表现及成绩变化。
@@ -96,10 +98,11 @@
             <div style="margin-bottom: 8px">
               <span class="tag">React</span>
               <span class="tag">Ant Design</span>
-              <span class="tag">react-router-dom</span>
+              <span class="tag">React-router-dom</span>
               <span class="tag">Axios</span>
               <span class="tag">Redux</span>
               <span class="tag">Vite</span>
+              <span class="tag">NodeJS</span>
               <span class="tag">Tailwindcss</span>
             </div>
             <div class="content">
@@ -231,7 +234,7 @@
             </p>
           </div>
         </li>
-        <li>
+        <!-- <li>
           <header>
             <h3>咕噜 UI</h3>
             <span>
@@ -260,7 +263,7 @@
           </p>
           <p></p>
           <p></p>
-        </li>
+        </li> -->
         <!-- <li>
           <header>
             <h3>云笔记</h3>
