@@ -18,6 +18,16 @@ article {
 }
 
 .education {
+  .title {
+    color: #5974d4;
+  }
+
+  .underline {
+    display: inline-block;
+    width: 100%; // 确保下划线的宽度覆盖整个元素
+    border-bottom: 2px solid #adbaea; // 下划线的颜色和粗细
+    padding-bottom: 10px; // 控制下划线与文字的间距
+  }
 }
 
 .skills .wrapper {
