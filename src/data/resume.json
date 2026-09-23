@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "profile": {
+    "name": "吴文宇",
+    "role": "全栈开发工程师",
+    "gender": "男",
+    "age": "29",
+    "phone": "15622178416",
+    "email": "johnnywwy@163.com",
+    "wechat": "johnnywwy",
+    "location": "",
+    "avatar": "",
+    "showAvatar": true
+  },
+  "education": [
+    {
+      "id": "edu-wuyi",
+      "title": "五邑大学",
+      "subtitle": "电子信息专业 · 本科",
+      "period": "",
+      "description": ""
+    }
+  ],
+  "work": [
+    {
+      "id": "job-chinasoft",
+      "title": "中软国际",
+      "subtitle": "",
+      "period": "2025 年 12 月 ~ 至今",
+      "description": "",
+      "projects": [
+        {
+          "id": "p-clinical",
+          "title": "SHSOP",
+          "subtitle": "",
+          "period": "",
+          "tags": "React, TypeScript, Nest.js, Nodejs, MongoDB, Redis",
+          "description": "**项目描述**： SHSOP 一站式策略性健康服务运作平台,是面向香港政府相关医疗政策与医疗服务流程的大型业务平台。项目覆盖 Clinical Help Profile、CDM FE、CDM BE 等多个子系统,为医护人员、运营人员及相关参与者提供临床资料维护、慢病管理与业务协同能力。\n\n**工作内容**\n\n1. 负责 SHSOP 旗下 Clinical Help Profile 与 CDM FE / BE 项目的需求开发、问题修复和版本迭代,完成前后端业务功能对接与联调。\n\n2. 重点参与 CDM 模块 CDF 相关业务开发,处理表单数据采集、字段校验、流程状态流转、接口入参与返回数据适配,支撑慢病管理场景下的数据录入与临床跟进。\n\n3. 参与新的 Medication 业务开发,负责药物信息展示、录入、更新及相关业务规则处理,保证页面交互、接口逻辑与后端数据结构一致。\n\n4. 配合业务、测试及后端团队定位线上及 UAT 环境问题,梳理异常数据和边界场景,提升模块交付质量与维护效率。\n\n**项目亮点**\n\n1. 针对 CDF 新旧版本表单逻辑相互影响的问题,建立统一的 版本兼容机制,隔离不同版本的字段、规则与状态处理逻辑,提升系统扩展性并降低后续重复开发成本。\n\n2. 推动复杂业务规则由前端硬编码向 配置化管理 演进,将 表单计算、字段联动、显示隐藏及状态控制 统一抽象,提升需求交付效率和规则维护性。\n\n3. 针对跨版本历史数据无法稳定复用的问题,建设 4 类数据转换与复制流程,支持历史记录在不同表单版本间复用,提升数据兼容性及医护人员操作效率。\n\n4. 优化多条数据场景下新增、删除、修改和复制的页面性能,通过 局部更新、精细化订阅 及 请求复用 减少重复渲染,提升复杂表单页面响应速度。\n\n5. 统一动态表单的 数据缓存与初始化流程,解决重复请求及异步数据加载顺序不一致导致的数据异常问题,提升页面稳定性和数据准确性。\n\n6. 梳理 前端、BFF、Clinical 及 Referral 服务链路,统一 多系统间状态判断口径,提升跨系统数据一致性和问题定位效率。",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "job-zhuhai",
+      "title": "珠海爱蒲京软件",
+      "subtitle": "",
+      "period": "2024 年 10 月 ~ 2025 年 12 月",
+      "description": "",
+      "projects": [
+        {
+          "id": "p-health",
+          "title": "SHSOP",
+          "subtitle": "",
+          "period": "",
+          "tags": "Nest.js, Nodejs, MongoDB, Redis",
+          "description": "**项目描述**：SHSOP 一站式策略性健康服务运作平台，一个大型的医疗平台,集成各种香港政府相关医疗政策实施的入口,并为相关人员提供各种医疗服务\n\n**工作内容**\n\n1. 负责多个政府资助或合作项目业务,如 CDCC(慢性疾病共同治理计划)、Dental PPP(牙科公私营合作计划)、MvCarer(移动照护服务) 等等\n\n2. 系统提供多种核心业务模块,包括: 人员登记(Enrol)、医生档案(DrProfile)、临床管理(Clinical / ClinicalTeam)、转介管理(Referral)、参与者管理(Participant) 等,支撑不同医疗项目的统一运营。\n\n**项目亮点**\n\n1. 项目采用 NestJS 构建后端服务,基于 微服务架构(Microservices Architecture) 设计,实现各业务模块(如 enrol、drprofile、referral、participant 等)的独立部署与灵活扩展,提升系统的可维护性与稳定性。\n\n2. 前后端分离设计:后端通过 RESTful API 提供统一接口服务,前端独立开发与部署,提升了团队并行开发效率与模块解耦度,支持多项目统一集成。\n\n3. 系统运行于 OpenShift 容器平台, 结合 CI/CD 流程实现自动化构建、部署与回滚,确保不同环境 (DEV/UAT/PROD)的一致性与快速交付。\n\n4. 团队采用 Scrum 敏捷开发流程,按迭代(Sprint)进行需求规划、开发与测试,灵活响应业务变更,持续优化系统性能与用户体验。",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "job-guangzhou",
+      "title": "广州华夏汇海科技有限公司",
+      "subtitle": "",
+      "period": "2022 年 11 月 ~ 2024 年 9 月",
+      "description": "",
+      "projects": [
+        {
+          "id": "p-sports",
+          "title": "智慧体育云平台",
+          "subtitle": "",
+          "period": "",
+          "tags": "React, Ant Design, React-router-dom, Axios, Redux, Vite, NodeJS, Tailwindcss",
+          "description": "**项目描述**： 一款涉及体测、抽测、视力、竞赛、体检等5大模块的应用。并将原有的基于 .net 开发的 C/S 客户端架构迁移至 B/S 架构\n\n**工作内容**\n\n1. 使用Vite搭建项目框架,了解原有 C/S 业务功能,使用 React 框架对原业务进行重构,罗列梳理B/S端无法实现的功能,并提供解决方案。\n\n**项目亮点**\n\n1. Node.js采集中转服务:由于架构迁移,浏览器安全策略问题,导致新架构无法对接公司旧设备 WIFI 采集相关功能,使用 Node.js 编写服务,并将其打包成 exe,对外暴露端口,供前端显示搜索并获取采集设备相关数据。\n\n2. 前端工程化:通过 Vite 构建工具提升项目的开发和构建效率,优化了热更新速度并减少了打包体积。同时,使用 ESLint、Prettier 和 Husky 实现代码规范化管理,确保团队协作中的代码质量和一致性。\n\n3. 文件上传组件: 支持图片、文件上传,并集成了文件预览和多图上传功能,并上传至阿里云OSS,解决了文件上传与图片管理的复杂场景。",
+          "url": ""
+        },
+        {
+          "id": "p-rope",
+          "title": "校园智慧跳绳平台",
+          "subtitle": "",
+          "period": "",
+          "tags": "React, Ant Design, React-router-dom, Axios, Redux, Vite, WebSocket",
+          "description": "**项目描述**： 与公司智能跳绳相结合,面向中小学师生,针对校园跳绳场景,集跳绳管理、作业、比赛、课堂、产品管理、物联网卡跟踪等,共计15个模块,帮助学生提升跳绳技能、监测体育锻炼状况,并为教师提供便捷的管理和数据分析工具。\n\n**工作内容**\n\n1. 从零开始进行项目调研,搭建了基于 React 的前端架构,确定了整体的技术栈,包括 React hooks、 Redux、React Router 等核心技术,确保了项目的技术选型与业务需求的紧密结合。\n\n2. 实现动态路由和按钮级别权限控制功能,React 的组件化思想和 Redux 状态管理库。\n\n3. 针对项目进行优化,提升平台性能与用户满意度,并顺利完成项目的上线工作。\n\n**项目难点**\n\n1. WebSocket 实时通信:与智能跳绳设备实时连接,确保数据同步和展示。具备自动重连、心跳检测功能,提升连接稳定性和数据传输可靠性\n\n2. 解析 Excel:根据业务需求,封装了通用 Excel 文件转 JSON 的导入组件,并发布到公司 npm 私有源供团队各个项目中使用。该组件支持高度自定义和数据处理功能,包括可根据字典配置自动映射相关数据, 支持分页上传、自动表头匹配、数据校验与错误提示、显著提升了数据导入的效率和准确性。\n\n3. 数据可视化分析: 利用 ECharts 提供多种图表和可视化组件,将跳绳数据和运动表现通过直观的图表展示,通过时间轴功能展示历史数据,方便用户追踪和回顾长期运动表现及成绩变化。\n\n4. 权限管理:实现权限管理,包括对用户管理、角色管理与菜单管理,使用户权限精确到按钮级别。",
+          "url": ""
+        },
+        {
+          "id": "p-mini",
+          "title": "校园智慧跳绳小程序",
+          "subtitle": "",
+          "period": "",
+          "tags": "Vue3, Uniapp, uview plus, WebSocket, pnpm, Vite, Unocss",
+          "description": "**项目描述**： 结合智慧校园跳绳平台,家长和学生可以在小程序上完成老师布置的作业,查看自己的运动记录和平时的自我锻炼。老师使用可以在课堂上发起快速比赛、训练等\n\n**工作内容**\n\n1. 独立实现小程序从0到1的申请、审批、开发、测试、上线以及后续维护全流程。\n\n2. 根据UI提供的设计规范,完成负责前端项目日常需求开发。\n\n**项目亮点**\n\n1. 独立实现使用 vite 搭建 uniapp 开发平台,引入 Unocss 原子化 css,并在公司内推广使用。\n\n2. 封装通用 Axios 请求,支持全局异常拦截、错误处理及请求头配置,提升了 API 请求管理的统一性和可维护性。\n\n3. 通过 WebSocket 私有协议实现在小程序上连接并控制智能跳绳设备,并实时获取跳绳数据。",
+          "url": ""
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "p-meeting",
+      "title": "会议室在线预约系统",
+      "subtitle": "",
+      "period": "",
+      "tags": "NestJS, TypeORM, Mysql, Redis, React, Ant Design, pnpm, Vite",
+      "description": "**项目描述**： 一款基于 web 端的会议室预约系统,含有管理端和用户端。使用 NestJS + Mysql + Redis 实现后端业务,使用 React 实现前端场景。\n\n**工作内容**\n\n1. 使用 Nest-cli 从0到1搭建项目,在私有Linux设备上部署Docker,Mysql,Redis等所需技术。\n\n2. 实现基于RBAC的角色权限控制,使用JWT作为系统验证登录方式,配合个人 163 邮箱实现登录验证。\n\n3. 使用 RESTful Api 进行接口规范化开发,并引入 ApiFox 等工具完成接口初步调试。",
+      "url": "https://github.com/johnnywwy/nest-study"
+    }
+  ],
+  "skills": "- 熟悉页面制作技巧，能将设计稿 **1:1 还原**。\n- 熟悉 **前后端分离** 技术，包括 AJAX、跨域、前端路由、Cookie、Session 等。\n- 熟悉 **Nest.js** 技术，能快速搭建后台项目。\n- 熟练掌握 **Vue 全家桶** 的使用，包括 VueCli、VueRouter、Vuex 等。\n- 了解 **TypeScript** 的使用，我的项目就是 TS 实现的。\n- 了解 **Docker** 的使用，熟悉 Dockerfile 编写，并搭建了一个基于 Docker 的[前端开发环境](https://github.com/johnnywwy/oh-my-front-env)。\n- 熟练使用 VS Code、WebStorm 等开发工具。",
+  "appearance": {
+    "color": "#5267b8",
+    "fontSize": 14
+  }
+}

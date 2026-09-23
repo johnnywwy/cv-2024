@@ -1,87 +1,46 @@
-* {
-  box-sizing: border-box;
-  text-decoration: none;
+@import 'tailwindcss' source(none);
+@source './App.vue';
+@source './components';
+@import './styles/resume.css';
+@theme {
+  --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
 }
-
-body {
-  background: #eee;
-  /* margin: 20px 0; */
+@layer base {
+  body {
+    @apply m-0 bg-[#f5f6fa] text-slate-800 antialiased;
+  }
+  button,
+  label[for] {
+    @apply cursor-pointer;
+  }
+  button:disabled {
+    @apply cursor-not-allowed opacity-40;
+  }
+  button,
+  input,
+  textarea,
+  select,
+  a {
+    @apply outline-offset-4;
+  }
+  :focus-visible {
+    @apply outline-2 outline-indigo-500;
+  }
 }
-
-article {
-  width: 21cm;
-  min-height: 29.7cm;
-  background: white;
-  margin: 0 auto;
-  overflow: auto;
-  padding: 1em;
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 transition hover:border-indigo-300 hover:text-indigo-700 disabled:hover:border-slate-200;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-indigo-700;
+  }
+  .field {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 transition placeholder:text-slate-300 focus:border-indigo-400 focus:outline-2 focus:outline-indigo-100;
+  }
+  .field-label {
+    @apply mb-1.5 block text-xs font-medium text-slate-500;
+  }
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white p-4;
+  }
 }
-
-a {
-  text-decoration: none;
-}
-body {
-}
-
-p {
-  margin: .3em 0;
-}
-
-h1 {
-  font-size: 25px;
-  margin-top: 0;
-}
-
-h4,
-h5,
-h6 {
-  font-weight: normal;
-}
-
-ol,
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-strong {
-  font-weight: normal;
-  color: #f60;
-}
-
-a {
-  color: #999;
-  text-decoration: none;
-  border-bottom: 1px solid;
-}
-
-p,
-li {
-  color: #666;
-}
-
-strong {
-  font-weight: normal;
-}
-
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
-}
-
-/* .bio {
-  position: relative;
-}
-
-.bio img {
-  position: absolute;
-  top: 0;
-  right: 0;
-} */

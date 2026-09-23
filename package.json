@@ -1,19 +1,42 @@
 {
-  "name": "cv-2023",
+  "name": "resume-studio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write src tests *.json *.js index.html README.md",
+    "test": "vitest run",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm build"
   },
   "dependencies": {
-    "sass": "1.69.4",
-    "vue": "^3.3.4"
+    "@tiptap/markdown": "3.31.3",
+    "@tiptap/starter-kit": "3.31.3",
+    "@tiptap/vue-3": "3.31.3",
+    "dompurify": "3.4.15",
+    "idb-keyval": "6.3.0",
+    "marked": "18.0.14",
+    "vue": "^3.5.7",
+    "zod": "4.6.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.4.5"
+    "@eslint/js": "^9",
+    "@tailwindcss/vite": "^4",
+    "@types/node": "26.6.2",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "eslint": "^9",
+    "eslint-plugin-vue": "10.11.0",
+    "jsdom": "30.1.1",
+    "prettier": "3.9.9",
+    "tailwindcss": "^4",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.70.1",
+    "vite": "^6.4.3",
+    "vitest": "^3",
+    "vue-tsc": "3.3.11"
   }
 }

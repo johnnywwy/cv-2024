@@ -1,0 +1,197 @@
+/* Document typography is shared by preview and print, independently of the workbench. */
+.resume-paper {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 15mm 16mm;
+  background: white;
+  color: #354154;
+  font-size: var(--resume-font-size, 14px);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.resume-paper h1 {
+  font-size: 2.2em;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  color: #18243a;
+  line-height: 1.25;
+}
+.resume-paper .resume-section-title {
+  margin: 1.65em 0 0.8em;
+  border-bottom: 1.5px solid var(--resume-color);
+  padding-bottom: 0.35em;
+  color: var(--resume-color);
+  font-size: 1.18em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  break-after: avoid;
+}
+.resume-paper .entry-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.3em 1em;
+  margin-bottom: 0.3em;
+  break-after: avoid;
+}
+.resume-paper .entry-heading h3 {
+  font-weight: 700;
+  color: #233149;
+  font-size: 1.08em;
+}
+.resume-paper .entry-heading time {
+  color: #64748b;
+  font-size: 0.88em;
+}
+.resume-paper .resume-entry {
+  margin-top: 1em;
+}
+.resume-paper .project-block {
+  margin: 0.8em 0 1.2em;
+}
+.resume-paper .project-heading {
+  font-size: 1em;
+  font-weight: 650;
+  color: #233149;
+  break-after: avoid;
+}
+.resume-paper .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  margin: 0.35em 0 0.6em;
+  break-after: avoid;
+}
+.resume-paper .tags span {
+  background: #f1f4f8;
+  border-radius: 3px;
+  padding: 0.05em 0.5em;
+  font-size: 0.8em;
+  color: #5b6880;
+}
+.resume-paper a {
+  color: var(--resume-color);
+  text-decoration: none;
+}
+.markdown-body {
+  overflow-wrap: anywhere;
+}
+.markdown-body p {
+  margin: 0.45em 0;
+}
+.markdown-body strong {
+  font-weight: 650;
+}
+.markdown-body em {
+  font-style: italic;
+}
+.markdown-body ul {
+  list-style: disc;
+  padding-left: 1.4em;
+  margin: 0.5em 0;
+}
+.markdown-body ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+}
+.markdown-body li {
+  padding-left: 0.15em;
+  margin: 0.3em 0;
+}
+.markdown-body li p {
+  margin: 0.15em 0;
+}
+.markdown-body :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 650;
+  font-size: 1.05em;
+  margin: 0.8em 0 0.4em;
+  break-after: avoid;
+}
+.markdown-body blockquote {
+  border-left: 3px solid #cbd5e1;
+  padding-left: 1em;
+  color: #64748b;
+}
+.markdown-body a {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+.markdown-body pre {
+  white-space: pre-wrap;
+  background: #f1f5f9;
+  padding: 0.6em;
+  border-radius: 5px;
+}
+.markdown-body code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+}
+.markdown-body hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 1em 0;
+}
+.tiptap {
+  min-height: 160px;
+  padding: 14px;
+  outline: none;
+}
+@page {
+  size: A4;
+  margin: 14mm 16mm;
+}
+@media print {
+  html,
+  body,
+  #app {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    height: auto !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .workbench,
+  .preview-pane,
+  .preview-scroll {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    border: 0 !important;
+    background: white !important;
+  }
+  .preview-scale {
+    width: auto !important;
+    height: auto !important;
+  }
+  .resume-paper {
+    width: auto !important;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+  .resume-paper,
+  .resume-paper * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .resume-paper p,
+  .resume-paper li {
+    orphans: 2;
+    widows: 2;
+  }
+  .resume-paper .profile-header {
+    break-inside: avoid;
+  }
+  .resume-paper .resume-entry,
+  .resume-paper .project-block {
+    break-inside: auto;
+  }
+}

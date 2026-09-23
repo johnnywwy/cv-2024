@@ -6,8 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+dist
 
-pnpm-lock.yaml
 node_modules
 dist
 dist-ssr
@@ -23,3 +23,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local verification artifacts
+tmp/
+output/

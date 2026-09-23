@@ -1,0 +1,9 @@
+<script setup lang="ts">
+defineProps<{ title: string }>()
+</script>
+<template>
+  <section>
+    <h2 class="resume-section-title">{{ title }}</h2>
+    <slot />
+  </section>
+</template>
