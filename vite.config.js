@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [vue(), tailwindcss()],
-  base: '/cv-wwy/',
+  base: '/cv-2024/',
   build: {
     rollupOptions: {
       output: {
