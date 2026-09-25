@@ -6,8 +6,25 @@ import { createVariant, createWorkspace, parseWorkspaceBackup } from '../src/typ
 import { projectResume, variantFilename } from '../src/lib/targeting'
 import { buildTargetPrompt } from '../src/lib/targetPrompt'
 import { exportMarkdown } from '../src/lib/markdown'
+import { mergeShsopWorkHistory } from '../src/types/resume'
 
 describe('targeted resumes', () => {
+  it('merges the two SHSOP employment records into one continuous project', () => {
+    const merged = mergeShsopWorkHistory(resumeSchema.parse(source))
+    expect(merged.work.map((job) => job.title)).toEqual([
+      '中软国际 / 珠海爱蒲京软件',
+      '广州华夏汇海科技有限公司',
+    ])
+    expect(merged.work[0].period).toBe('2024 年 10 月 ~ 至今')
+    expect(merged.work[0].projects).toHaveLength(1)
+    expect(merged.work[0].projects[0].period).toBe('')
+    expect(merged.work[0].projects[0].description).toContain(
+      '负责 Clinical Help Profile、CDM FE / BE 与 Medication 模块的端到端交付',
+    )
+    expect(merged.work[0].projects[0].tags).toContain('React')
+    expect(source.work).toHaveLength(3)
+    expect(mergeShsopWorkHistory(merged).work[0].projects[0].period).toBe('')
+  })
   it('round-trips full strategy and independent resumes, and accepts legacy backups', () => {
     const workspace = createWorkspace(resumeSchema.parse(source))
     const target = createVariant(workspace.variants[0].resume, 'target', '目标公司', '前端岗位')
@@ -18,7 +35,9 @@ describe('targeted resumes', () => {
     workspace.variants.push(target)
     workspace.activeId = target.id
     expect(parseWorkspaceBackup(JSON.stringify(workspace))).toEqual(workspace)
-    expect(parseWorkspaceBackup(JSON.stringify(source)).variants[0].resume).toEqual(source)
+    expect(parseWorkspaceBackup(JSON.stringify(source)).variants[0].resume).toEqual(
+      mergeShsopWorkHistory(resumeSchema.parse(source)),
+    )
   })
   it('rejects duplicate version IDs, missing active versions and multiple base resumes', () => {
     const workspace = createWorkspace(resumeSchema.parse(source))

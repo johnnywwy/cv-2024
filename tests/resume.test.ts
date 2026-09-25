@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from 'vitest'
 import source from '../src/data/resume.json'
-import { parseBackup, resumeSchema } from '../src/types/resume'
+import { mergeShsopWorkHistory, parseBackup, resumeSchema } from '../src/types/resume'
 import { renderMarkdown, exportMarkdown, safeUrl } from '../src/lib/markdown'
 import { Editor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
@@ -9,7 +9,12 @@ import { Markdown } from '@tiptap/markdown'
 
 describe('resume backups', () => {
   it('round trips the full latest resume and settings', () => {
-    expect(parseBackup(JSON.stringify(source))).toEqual(source)
+    const parsed = parseBackup(JSON.stringify(source))
+    expect(parsed).toEqual(mergeShsopWorkHistory(resumeSchema.parse(source)))
+    expect(parsed.work.map((job) => job.title)).toEqual([
+      '中软国际 / 珠海爱蒲京软件',
+      '广州华夏汇海科技有限公司',
+    ])
     expect(source.work.map((job) => job.title)).toEqual([
       '中软国际',
       '珠海爱蒲京软件',
@@ -43,9 +48,10 @@ describe('resume backups', () => {
 describe('Markdown safety and export', () => {
   it('renders supported formatting while dropping HTML and unsafe links', () => {
     const html = renderMarkdown(
-      '**加粗**\n\n1. 项目\n\n[安全](https://example.com)\n\n[坏链接](javascript:alert(1))\n\n<script>alert(1)</script>\n\n<img src=x onerror=alert(1)>',
+      '**加粗** React\n\n1. 项目\n\n[安全](https://example.com)\n\n[坏链接](javascript:alert(1))\n\n<script>alert(1)</script>\n\n<img src=x onerror=alert(1)>',
     )
     expect(html).toContain('<strong>加粗</strong>')
+    expect(html).toContain('<mark>React</mark>')
     expect(html).toContain('<ol>')
     expect(html).not.toMatch(/<script|<img|href="javascript:|onerror=/)
     expect(safeUrl('javascript:alert(1)')).toBeUndefined()

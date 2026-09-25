@@ -1,7 +1,7 @@
 import { computed, onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { get, set } from 'idb-keyval'
 import { createDefaultResume, loadDefaultResume } from '../data/defaultResume'
-import type { ResumeDocument } from '../types/resume'
+import { mergeShsopWorkHistory, type ResumeDocument } from '../types/resume'
 import {
   cloneResume,
   createVariant,
@@ -62,6 +62,13 @@ export function useResume() {
           : legacy !== undefined
             ? parseWorkspaceBackup(legacy)
             : createWorkspace(await loadDefaultResume())
+      workspace.value.variants = workspace.value.variants.map((variant) => ({
+        ...variant,
+        resume: mergeShsopWorkHistory(variant.resume),
+        hiddenEntryIds: variant.hiddenEntryIds.map((entryId) =>
+          entryId === 'p-health' ? 'p-clinical' : entryId,
+        ),
+      }))
       status.value =
         legacy !== undefined ? '原简历已迁移为基础简历，旧数据仍保留' : '已恢复简历版本库'
     } catch {

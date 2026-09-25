@@ -10,6 +10,7 @@ const mode = ref<'visual' | 'source'>('visual')
 const linkOpen = ref(false)
 const linkUrl = ref('')
 const linkError = ref('')
+const sourceRef = ref<HTMLTextAreaElement>()
 let internalUpdate = false
 const editor = useEditor({
   extensions: [
@@ -19,7 +20,7 @@ const editor = useEditor({
     }),
     Markdown,
   ],
-  content: renderMarkdown(model.value),
+  content: renderMarkdown(model.value, false),
   editorProps: {
     attributes: { 'aria-label': props.label, role: 'textbox', 'aria-multiline': 'true' },
   },
@@ -33,13 +34,13 @@ watch(
   model,
   (value) => {
     if (!internalUpdate && mode.value === 'visual' && editor.value?.getMarkdown() !== value)
-      editor.value?.commands.setContent(renderMarkdown(value), { emitUpdate: false })
+      editor.value?.commands.setContent(renderMarkdown(value, false), { emitUpdate: false })
   },
   { flush: 'sync' },
 )
 function switchMode(next: 'visual' | 'source') {
   if (next === 'visual')
-    editor.value?.commands.setContent(renderMarkdown(model.value), { emitUpdate: false })
+    editor.value?.commands.setContent(renderMarkdown(model.value, false), { emitUpdate: false })
   mode.value = next
 }
 function toggleLink() {
@@ -56,6 +57,18 @@ function applyLink() {
   else editor.value?.chain().focus().unsetLink().run()
   linkOpen.value = false
   linkError.value = ''
+}
+function toggleSourceHighlight() {
+  const textarea = sourceRef.value
+  if (!textarea) return
+  const start = textarea.selectionStart
+  const end = textarea.selectionEnd
+  if (start === end) return
+  model.value = `${model.value.slice(0, start)}==${model.value.slice(start, end)}==${model.value.slice(end)}`
+  requestAnimationFrame(() => {
+    textarea.focus()
+    textarea.setSelectionRange(start + 2, end + 2)
+  })
 }
 onBeforeUnmount(() => editor.value?.destroy())
 </script>
@@ -166,11 +179,25 @@ onBeforeUnmount(() => editor.value?.destroy())
       </template>
       <textarea
         v-show="mode === 'source'"
+        ref="sourceRef"
         v-model="model"
         :aria-label="`${label} Markdown 源码`"
         class="min-h-56 w-full resize-y border-0 p-3 font-mono text-sm leading-7 outline-none"
         spellcheck="false"
       />
+      <div
+        v-if="mode === 'source'"
+        class="flex items-center gap-2 border-t border-slate-100 bg-slate-50/80 px-2 py-1.5"
+      >
+        <button
+          type="button"
+          class="rounded px-2 py-1 font-semibold text-orange-500 hover:bg-orange-50"
+          @click="toggleSourceHighlight"
+        >
+          A 橙色重点
+        </button>
+        <span class="text-xs text-slate-400">选中文字后点击，或使用 ==重点内容==</span>
+      </div>
     </div>
     <p v-if="mode === 'source'" class="mt-2 text-xs leading-5 text-slate-400">
       支持标题、**加粗**、*斜体*、列表、链接和引用。HTML、图片与表格不在首版支持范围内。

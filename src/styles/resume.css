@@ -83,6 +83,11 @@
 .markdown-body strong {
   font-weight: 650;
 }
+.markdown-body mark {
+  background: transparent;
+  color: #ff6600;
+  font-weight: 500;
+}
 .markdown-body em {
   font-style: italic;
 }

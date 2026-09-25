@@ -3,12 +3,41 @@ import DOMPurify from 'dompurify'
 import type { ResumeDocument, Project } from '../types/resume'
 
 const parser = new Marked({ gfm: true, breaks: true, renderer: { html: () => '' } })
-export function renderMarkdown(markdown: string): string {
-  return DOMPurify.sanitize(parser.parse(markdown, { async: false }), {
+const highlightTerms = [
+  'React',
+  'TypeScript',
+  'NestJS',
+  'Nodejs',
+  'MongoDB',
+  'Redis',
+  'BFF',
+  'CI/CD',
+  'OpenShift',
+  '微服务',
+  '配置化规则',
+  '4 类数据迁移场景',
+  '端到端交付',
+  '版本差异',
+  '历史数据',
+  '局部更新',
+  '跨系统状态不一致',
+]
+const highlightPattern = new RegExp(
+  `(${highlightTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
+  'g',
+)
+function addHighlights(html: string): string {
+  const withExplicitMarks = html.replace(/==([^=\n]+)==/g, '<mark>$1</mark>')
+  return withExplicitMarks.replace(highlightPattern, '<mark>$1</mark>')
+}
+export function renderMarkdown(markdown: string, highlight = true): string {
+  const html = parser.parse(markdown, { async: false })
+  return DOMPurify.sanitize(highlight ? addHighlights(html) : html, {
     ALLOWED_TAGS: [
       'p',
       'br',
       'strong',
+      'mark',
       'em',
       's',
       'h1',

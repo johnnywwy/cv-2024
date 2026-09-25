@@ -1,11 +1,11 @@
 import source from './resume.json'
 import avatar from '../assets/wwy.jpg'
-import { resumeSchema, type ResumeDocument } from '../types/resume'
+import { mergeShsopWorkHistory, resumeSchema, type ResumeDocument } from '../types/resume'
 import { normalizePhoto } from '../lib/files'
 
 /** Seed only on first use or an explicit reset; never overwrite a saved draft. */
 export function createDefaultResume(): ResumeDocument {
-  return resumeSchema.parse(structuredClone(source))
+  return mergeShsopWorkHistory(resumeSchema.parse(structuredClone(source)))
 }
 export async function loadDefaultResume(): Promise<ResumeDocument> {
   const resume = createDefaultResume()
