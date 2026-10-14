@@ -1,6 +1,7 @@
 import { computed, onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { get, set } from 'idb-keyval'
 import { createDefaultResume, loadDefaultResume } from '../data/defaultResume'
+import publishedResume from '../data/resume.json'
 import { mergeShsopWorkHistory, type ResumeDocument } from '../types/resume'
 import {
   cloneResume,
@@ -10,7 +11,15 @@ import {
   type ResumeWorkspace,
 } from '../types/workspace'
 
-export const WORKSPACE_KEY = 'resume-studio:workspace:v2'
+// Each published data revision starts with the resume shipped by the build.
+// Old drafts remain in their own storage keys and cannot shadow a new release.
+const publishedRevision = Array.from(JSON.stringify(publishedResume)).reduce(
+  (hash, character) => Math.imul(hash ^ character.charCodeAt(0), 16777619) >>> 0,
+  2166136261,
+).toString(16)
+export const WORKSPACE_KEY = import.meta.env.PROD
+  ? `resume-studio:published:${publishedRevision}`
+  : 'resume-studio:workspace:v2'
 export const LEGACY_KEY = 'resume-studio:v1'
 export function useResume() {
   const workspace = ref<ResumeWorkspace>(createWorkspace(createDefaultResume()))
@@ -55,7 +64,8 @@ export function useResume() {
   onMounted(async () => {
     try {
       const saved = await get<string>(WORKSPACE_KEY)
-      const legacy = saved === undefined ? await get<string>(LEGACY_KEY) : undefined
+      const legacy =
+        saved === undefined && !import.meta.env.PROD ? await get<string>(LEGACY_KEY) : undefined
       workspace.value =
         saved !== undefined
           ? parseWorkspaceBackup(saved)
