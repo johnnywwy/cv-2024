@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { parseBackup, resumeSchema, type ResumeDocument } from './resume'
+import { parseBackup, updateSavedResume, resumeSchema, type ResumeDocument } from './resume'
 
 const note = z.string().max(100_000)
 export const variantSchema = z.object({
@@ -71,7 +71,13 @@ export function parseWorkspaceBackup(source: string): ResumeWorkspace {
   if (typeof value === 'object' && value !== null && 'format' in value) {
     const result = workspaceSchema.safeParse(value)
     if (!result.success) throw new Error('版本库备份无效或版本不受支持，现有内容未修改。')
-    return result.data
+    return {
+      ...result.data,
+      variants: result.data.variants.map((variant) => ({
+        ...variant,
+        resume: updateSavedResume(variant.resume),
+      })),
+    }
   }
   return createWorkspace(parseBackup(source))
 }

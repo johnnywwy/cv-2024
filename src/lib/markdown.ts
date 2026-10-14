@@ -92,7 +92,9 @@ export function exportMarkdown(resume: ResumeDocument): string {
         .filter(Boolean)
         .map(escape)
         .join(' | '),
-      resume.education.length ? '## 教育经历' : '',
+      resume.skills ? '## 专业技能' : '',
+      resume.skills,
+      resume.education.length ? '## 学历' : '',
       ...resume.education.map((e) =>
         [
           `### ${escape(e.title)}`,
@@ -115,8 +117,6 @@ export function exportMarkdown(resume: ResumeDocument): string {
       ),
       resume.projects.length ? '## 个人项目' : '',
       ...resume.projects.map((p) => projectMarkdown(p, 3)),
-      resume.skills ? '## 技能' : '',
-      resume.skills,
     ]
       .filter(Boolean)
       .join('\n\n') + '\n'

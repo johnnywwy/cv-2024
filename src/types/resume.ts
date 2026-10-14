@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import defaultResume from '../data/resume.json'
 
 const text = z.string().max(100_000)
 const itemBase = {
@@ -54,8 +55,59 @@ export const newEntry = (): Entry => ({
 export const newProject = (): Project => ({ ...newEntry(), tags: '', url: '' })
 export const newJob = (): Job => ({ ...newEntry(), projects: [] })
 
+export function removeRetiredProjects(document: ResumeDocument): ResumeDocument {
+  return {
+    ...document,
+    projects: document.projects.filter(
+      (project) => project.id !== 'p-meeting' && project.title.trim() !== '会议室在线预约系统',
+    ),
+  }
+}
+
+export function updateSavedResume(document: ResumeDocument): ResumeDocument {
+  const updated = removeRetiredProjects(document)
+  updated.work = updated.work.map((job) => {
+    if (job.id === 'job-guangzhou') return { ...job, period: '2021 年 7 月 ~ 2024 年 9 月' }
+    if (job.id === 'job-chinasoft')
+      return {
+        ...job,
+        period:
+          job.period === '2024 年 10 月 ~ 至今'
+            ? '2024 年 10 月 ~ 2026 年 9 月'
+            : job.period === '2025 年 12 月 ~ 至今'
+              ? '2025 年 12 月 ~ 2026 年 9 月'
+              : job.period,
+      }
+    return job
+  })
+  updated.projects = updated.projects.map((project) => {
+    if (project.id !== 'p-campus-sports') return project
+    let description = project.description
+    for (const term of [
+      '多组织、多身份权限体系',
+      'RBAC 与授权学校范围',
+      '批量导入导出',
+      '产权归属与临时使用关系分离',
+      '后台与移动端共用业务数据和校验规则',
+      'MQTT over WebSocket',
+      'Three.js',
+      '断线重连',
+      'Docker Compose',
+      'Cloudflare Tunnel',
+    ]) {
+      if (!description.includes(`==${term}==`))
+        description = description.replaceAll(term, `==${term}==`)
+    }
+    return { ...project, description }
+  })
+  const generatedSkills =
+    updated.skills.startsWith('- **前端开发**：熟练使用 React、Vue 3') &&
+    updated.skills.includes('- **AI 辅助开发**：')
+  return generatedSkills ? { ...updated, skills: defaultResume.skills } : updated
+}
+
 export function mergeShsopWorkHistory(source: ResumeDocument): ResumeDocument {
-  const document = JSON.parse(JSON.stringify(source)) as ResumeDocument
+  const document = updateSavedResume(JSON.parse(JSON.stringify(source)) as ResumeDocument)
   const normalizeText = (value: string) => value.replace(/,/g, '，')
   document.skills = normalizeText(document.skills)
   for (const entry of document.education) {
@@ -99,7 +151,7 @@ export function mergeShsopWorkHistory(source: ResumeDocument): ResumeDocument {
   }
   current.title = '中软国际 / 珠海爱蒲京软件'
   current.subtitle = '全栈开发工程师'
-  current.period = '2024 年 10 月 ~ 至今'
+  current.period = '2024 年 10 月 ~ 2026 年 9 月'
   document.work = document.work.filter((job) => job.id !== 'job-zhuhai')
   return document
 }

@@ -7,10 +7,10 @@ export type FieldDefinition<T> = {
 }
 export const editorSections = [
   { id: 'profile', title: '基本信息', icon: 'person', hint: '让招聘者快速认识你。' },
-  { id: 'education', title: '教育经历', icon: 'education', hint: '填写学校、专业与教育背景。' },
+  { id: 'skills', title: '专业技能', icon: 'skills', hint: '突出与你的目标岗位相关的能力。' },
+  { id: 'education', title: '学历', icon: 'education', hint: '填写学校、专业与教育背景。' },
   { id: 'work', title: '工作经历', icon: 'work', hint: '用具体的工作与成果，呈现你的经验。' },
   { id: 'projects', title: '个人项目', icon: 'project', hint: '展示那些值得被看见的作品。' },
-  { id: 'skills', title: '专业技能', icon: 'skills', hint: '突出与你的目标岗位相关的能力。' },
   { id: 'appearance', title: '排版设置', icon: 'settings', hint: '调整细节，让内容更容易阅读。' },
 ] as const
 export type EditorSection = (typeof editorSections)[number]['id']

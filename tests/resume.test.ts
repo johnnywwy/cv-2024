@@ -6,8 +6,34 @@ import { renderMarkdown, exportMarkdown, safeUrl } from '../src/lib/markdown'
 import { Editor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import { Markdown } from '@tiptap/markdown'
+import { createWorkspace, createVariant, parseWorkspaceBackup } from '../src/types/workspace'
 
 describe('resume backups', () => {
+  it('removes the retired meeting project from saved resumes and every workspace variant', () => {
+    const legacy = resumeSchema.parse(source)
+    legacy.projects.push({
+      id: 'p-meeting',
+      title: '会议室在线预约系统',
+      subtitle: '',
+      period: '',
+      tags: '',
+      description: '',
+      url: 'https://github.com/johnnywwy/nest-study',
+    })
+    const expected = source.projects
+    expect(parseBackup(JSON.stringify(legacy)).projects).toEqual(
+      parseBackup(JSON.stringify(source)).projects,
+    )
+    const workspace = createWorkspace(legacy)
+    workspace.variants.push(createVariant(legacy, 'target', '公司', '全栈'))
+    const restored = parseWorkspaceBackup(JSON.stringify(workspace))
+    for (const variant of restored.variants) {
+      expect(variant.resume.projects).toEqual(expected)
+      expect(exportMarkdown(variant.resume)).not.toContain('会议室在线预约系统')
+    }
+    expect(parseWorkspaceBackup(JSON.stringify(restored))).toEqual(restored)
+    expect(legacy.projects).toHaveLength(expected.length + 1)
+  })
   it('round trips the full latest resume and settings', () => {
     const parsed = parseBackup(JSON.stringify(source))
     expect(parsed).toEqual(mergeShsopWorkHistory(resumeSchema.parse(source)))
@@ -62,13 +88,13 @@ describe('Markdown safety and export', () => {
       '中软国际',
       '珠海爱蒲京软件',
       '校园智慧跳绳小程序',
-      '会议室在线预约系统',
+      '校园运动教学管理平台',
       '技能',
       '五邑大学',
     ])
       expect(output).toContain(title)
     expect(output).not.toContain('data:image')
-    expect(output).toContain('https://github.com/johnnywwy/nest-study')
+    expect(output).toContain('https://sports.johnnywwy.com/')
   })
   it('keeps supported formats through rich text / Markdown round trips', () => {
     const initial =

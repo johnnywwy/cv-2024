@@ -26,7 +26,7 @@
       "id": "job-chinasoft",
       "title": "中软国际",
       "subtitle": "",
-      "period": "2025 年 12 月 ~ 至今",
+      "period": "2025 年 12 月 ~ 2026 年 9 月",
       "description": "",
       "projects": [
         {
@@ -62,7 +62,7 @@
       "id": "job-guangzhou",
       "title": "广州华夏汇海科技有限公司",
       "subtitle": "",
-      "period": "2022 年 11 月 ~ 2024 年 9 月",
+      "period": "2021 年 7 月 ~ 2024 年 9 月",
       "description": "",
       "projects": [
         {
@@ -97,16 +97,16 @@
   ],
   "projects": [
     {
-      "id": "p-meeting",
-      "title": "会议室在线预约系统",
-      "subtitle": "",
+      "id": "p-campus-sports",
+      "title": "校园运动教学管理平台",
+      "subtitle": "个人项目 · 全栈开发",
       "period": "",
-      "tags": "NestJS, TypeORM, Mysql, Redis, React, Ant Design, pnpm, Vite",
-      "description": "**项目描述**： 一款基于 web 端的会议室预约系统,含有管理端和用户端。使用 NestJS + Mysql + Redis 实现后端业务,使用 React 实现前端场景。\n\n**工作内容**\n\n1. 使用 Nest-cli 从0到1搭建项目,在私有Linux设备上部署Docker,Mysql,Redis等所需技术。\n\n2. 实现基于RBAC的角色权限控制,使用JWT作为系统验证登录方式,配合个人 163 邮箱实现登录验证。\n\n3. 使用 RESTful Api 进行接口规范化开发,并引入 ApiFox 等工具完成接口初步调试。",
-      "url": "https://github.com/johnnywwy/nest-study"
+      "tags": "React 19, TypeScript, HeroUI, NestJS, Prisma, MySQL, Redis, MQTT, Three.js, Docker, Jenkins, Cloudflare Tunnel",
+      "description": "**项目描述**：以智能跳绳为切入点，建设管理后台与移动 Web 应用，支持公司、代理商、教育局和学校的组织管理、学籍管理、设备管理及跳绳教学，打通设备生产录入、学生绑定、练习采集、作业提交、教师批改和学校统计流程。\n\n**主要工作**\n\n1. **==多组织、多身份权限体系==**：支持同一账号加入多个组织并切换身份，各身份独立配置角色、菜单及数据范围；结合 ==RBAC 与授权学校范围==，实现功能权限和数据访问隔离，支持代理商跨学校管理。\n\n2. **学校基础管理**：实现学校、学年、班级、学生、教师及任教关系管理，支持==批量导入导出==、归档和删除依赖校验，保留关联业务历史。\n\n3. **设备生命周期管理**：实现设备序列号录入、二维码展示、设备号及扫码绑定、解绑、换绑和历史追踪；区分学校公用设备与学生个人设备，将==产权归属与临时使用关系分离==。\n\n4. **教学作业流程**：支持自由、定时、定数练习及结构化作业目标；学生可手动记录、上传视频或关联训练，教师可确认次数、反馈和要求重交，==后台与移动端共用业务数据和校验规则==。\n\n5. **实时数据采集与可视化**：使用手机加速度计和陀螺仪模拟设备，通过 ==MQTT over WebSocket== 传输数据，结合 ==Three.js== 展示手柄实时姿态；处理==断线重连==、重复请求和传感器中断等情况。\n\n6. **工程化与生产部署**：按职责封装表单、列表、弹窗和业务组件，通过类型检查、单元测试及业务集成测试验证关键逻辑；使用 ==Docker Compose==、数据库迁移和 ==Cloudflare Tunnel== 完成生产部署。",
+      "url": "https://sports.johnnywwy.com/"
     }
   ],
-  "skills": "- 熟悉页面制作技巧，能将设计稿 **1:1 还原**。\n- 熟悉 **前后端分离** 技术，包括 AJAX、跨域、前端路由、Cookie、Session 等。\n- 熟悉 **Nest.js** 技术，能快速搭建后台项目。\n- 熟练掌握 **Vue 全家桶** 的使用，包括 VueCli、VueRouter、Vuex 等。\n- 了解 **TypeScript** 的使用，我的项目就是 TS 实现的。\n- 了解 **Docker** 的使用，熟悉 Dockerfile 编写，并搭建了一个基于 Docker 的[前端开发环境](https://github.com/johnnywwy/oh-my-front-env)。\n- 熟练使用 VS Code、WebStorm 等开发工具。",
+  "skills": "- 熟练使用 **React、Vue 3、TypeScript**，具备 Web 和小程序开发经验。\n- 熟悉 **Node.js、NestJS**，能够独立开发后端接口及权限认证。\n- 熟悉 **MySQL、MongoDB、Redis**，掌握常用数据存储与缓存方案。\n- 熟悉 **Docker、Linux、CI/CD**，能够完成项目构建与部署。\n- 熟练使用 **AI 工具**辅助编码、重构、测试与问题排查。",
   "appearance": {
     "color": "#5267b8",
     "fontSize": 14

@@ -15,7 +15,7 @@ describe('targeted resumes', () => {
       '中软国际 / 珠海爱蒲京软件',
       '广州华夏汇海科技有限公司',
     ])
-    expect(merged.work[0].period).toBe('2024 年 10 月 ~ 至今')
+    expect(merged.work[0].period).toBe('2024 年 10 月 ~ 2026 年 9 月')
     expect(merged.work[0].projects).toHaveLength(1)
     expect(merged.work[0].projects[0].period).toBe('')
     expect(merged.work[0].projects[0].description).toContain(
@@ -58,7 +58,7 @@ describe('targeted resumes', () => {
   it('uses the same selection for preview and export without deleting editable content', () => {
     const target = createVariant(resumeSchema.parse(source), 'target', '甲', '前端')
     target.hiddenEntryIds = [
-      source.projects[0].id,
+      ...source.projects.map((project) => project.id),
       source.work[0].projects[0].id,
       source.work[1].id,
     ]
@@ -66,7 +66,7 @@ describe('targeted resumes', () => {
     expect(output.projects).toHaveLength(0)
     expect(output.work).toHaveLength(2)
     expect(output.work[0].projects).toHaveLength(0)
-    expect(exportMarkdown(output)).not.toContain('会议室在线预约系统')
+    expect(exportMarkdown(output)).not.toContain('校园运动教学管理平台')
     expect(exportMarkdown(output)).not.toContain('珠海爱蒲京软件')
     expect(target.resume).toEqual(source)
     target.hiddenEntryIds = []
